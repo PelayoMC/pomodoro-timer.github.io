@@ -3,7 +3,7 @@ import * as ActionTypes from './actionTypes'
 export const Timer = (
   state = {
     isRunning: false,
-    time: 0.1 * 60,
+    time: 25 * 60,
     isFinished: false
   },
   action
