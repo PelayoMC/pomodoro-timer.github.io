@@ -28,6 +28,7 @@
 }
 
 #timer {
+  user-select: none;
   background-color: lime;
   text-align: center;
   font-size: xxx-large;
@@ -44,4 +45,9 @@
 #ctrl-btn {
   max-width: 50px;
   margin: 0px 10px;
+}
+
+button:active {
+  box-shadow: 7px 6px 28px 1px rgba(0, 0, 0, 0.24);
+  transform: translateY(4px);
 }

@@ -1,16 +1,15 @@
 import "./App.css";
-import Config from "./components/Config";
-import Timer from "./components/Timer";
-import Buttons from "./components/Buttons";
+import { ConfigureStore } from "./redux/store";
+import { Provider } from "react-redux";
+import Main from "./Main";
 
-function App() {
+function App() {  
+  const store = ConfigureStore();
+
   return (
-    <div className="App">
-      <h1>25 + 5 Clock</h1>
-      <Config></Config>
-      <Timer></Timer>
-      <Buttons></Buttons>
-    </div>
+    <Provider store={store}>
+      <Main />
+    </Provider>    
   );
 }
 
