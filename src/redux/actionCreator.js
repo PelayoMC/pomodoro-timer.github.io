@@ -4,15 +4,21 @@ export const playTimer = () => ({
   type: ActionTypes.PLAY,
 });
 
-export const uploadTimer = (time) => ({
+export const uploadTimer = (time, breaktime) => ({
   type: ActionTypes.UPDATE,
   payload: time,
+  payload2: breaktime,
 });
 
-export const stopTimer = (dishes) => ({
+export const stopTimer = () => ({
   type: ActionTypes.STOP
 });
 
-export const reloadTimer = () => ({
-    type: ActionTypes.RELOAD
-  });
+export const reloadTimer = (time) => ({
+   type: ActionTypes.RELOAD,
+   payload: time,
+});
+
+export const finishTimer = () => ({
+    type: ActionTypes.FINISHED
+ });

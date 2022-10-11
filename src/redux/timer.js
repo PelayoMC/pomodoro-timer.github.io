@@ -3,7 +3,8 @@ import * as ActionTypes from './actionTypes'
 export const Timer = (
   state = {
     isRunning: false,
-    time: 1500
+    time: 0.1 * 60,
+    isFinished: false
   },
   action
 ) => {
@@ -14,19 +15,36 @@ export const Timer = (
         isRunning: true,
       };
       case ActionTypes.UPDATE:
-        if(state.isRunning) 
+        let newTime = state.time - 1;
+        if(state.isRunning && !state.isFinished) {
             return {
                 ...state,
-                time: state.time -= action.payload
+                time: newTime <= 0 ? action.payload2 : newTime,
+                isFinished: newTime <= 0 ? true : false
             };
+        }
+        else if(state.isRunning && state.isFinished) {
+            return {
+                ...state,
+                time: newTime <= 0 ? action.payload : newTime,
+                isFinished: newTime <= 0 ? false : true
+            };
+        }
         else return state
     case ActionTypes.STOP:
-      return { ...state, isRunning: false, };
+      return { ...state, isRunning: false };
     case ActionTypes.RELOAD:
       return {
         ...state,
         isRunning: false,
-        time: 1500
+        time: action.payload,
+        isFinished: false
+      };
+      case ActionTypes.FINISHED:
+      return {
+        ...state,
+        time: action.payload,
+        isFinished: true
       };
     default:
       return state;
